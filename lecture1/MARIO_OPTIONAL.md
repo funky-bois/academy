@@ -18,13 +18,21 @@ Prompt the user until they enter an integer between 1 and 8 inclusive. Then prin
 Examples:
 
 For h = 1
+
+```
   #  #
+```
 
 For h = 2
+
+```
    #  #
   ##  ##
 ```
+  
 For h = 8
+
+```
        #  #
       ##  ##
      ###  ###
