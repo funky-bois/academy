@@ -54,7 +54,7 @@ char determine_what_card_it_is(char first_character, char second_character, int 
 
     if ((first_character == '3' && (second_character == '4' || second_character == '7')) && card_length == 15)
         return 'A';
-    if ((first_character == '5' && (second_character == '1' || second_character == '2' || second_character == '3' || second_character == '4' || second_character == '5')) && card_length == 16)
+    if ((first_character == '5' && (second_character >= '1' || second_character <= '5')) && card_length == 16)
         return 'M';
     if ((first_character == '4') && (card_length == 13 || card_length == 16))
         return 'V';
@@ -84,7 +84,7 @@ void check_card_validity(string credit_card_number, char possible_card)
     }
 
     bool is_number_luhn = (sumOdd + sumEven) % 10 == 0;
-    if (is_number_luhn && possible_card != ' ')
+    if (is_number_luhn)
     {
         printf("%s", possible_card == 'A' ? "AMEX" : possible_card == 'V' ? "VISA"
                                                                           : "MASTERCARD");

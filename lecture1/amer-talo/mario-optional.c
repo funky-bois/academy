@@ -10,6 +10,7 @@ int main(void)
         h = get_int("Input the height of desired pyramid: ");
     } while (h < 1 || h > 8);
 
+    // i know its a bad way with 3 nested loops but it was my experimenting way
     for (int i = 0; i < h; i++)
     {
         for (int j = 0; j < h; j++)
