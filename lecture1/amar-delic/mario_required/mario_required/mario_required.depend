@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1762973059 source:c:\users\windows\academy\lecture1\amar-delic\mario_required\mario_required\main.c
+	<stdio.h>
+	<stdlib.h>
+
