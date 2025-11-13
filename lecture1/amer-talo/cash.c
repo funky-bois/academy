@@ -9,7 +9,7 @@ int main(void)
     do
     {
         unhandled_number = get_double("Change owed: ");
-    } while (unhandled_number <= 0);
+    } while (unhandled_number < 0);
 
     int cents = (int)round(unhandled_number * 100);
 
