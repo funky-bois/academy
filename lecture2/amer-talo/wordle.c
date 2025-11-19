@@ -9,7 +9,7 @@ string convertCurrentStringToUpper(string s);
 void countOccassions(string secret, int counts[26]);
 int filterForDuplicatesAndCorrect(string feedback, string guess, string secret, int counts[26]);
 void printFeedback(string feedback);
-string getInput();
+string getInput(int x);
 
 #define WORD_LEN 5
 #define MAX_TRIES 6
@@ -48,9 +48,10 @@ int main(void)
     for (int i = 0; i < MAX_TRIES; i++)
     {
         char feedback[WORD_LEN + 1] = ".....";
-        string guess = getInput();
+        string guess = getInput(i);
         string convertedGuess = convertCurrentStringToUpper(guess);
 
+        int counts[26] = {0};
         countOccassions(secret, counts);
         int correct = filterForDuplicatesAndCorrect(feedback, convertedGuess, secret, counts);
 
@@ -66,12 +67,14 @@ int main(void)
     return 0;
 }
 
-string getInput()
+string getInput(int x)
 {
     string guess;
     do
     {
-        guess = get_string("guess = ");
+        printf("guess %i ", x);
+        guess = get_string("= ");
+
     } while (strlen(guess) != WORD_LEN);
 
     return guess;
@@ -120,18 +123,14 @@ int filterForDuplicatesAndCorrect(string feedback, string guess, string secret, 
             correctCounter++;
             counts[secret[i] - 'A']--;
         }
-        else if (counts[secret[i] - 'A'] > 0)
+        else if (counts[guess[i] - 'A'] > 0)
         {
-            for (int j = 0; j < WORD_LEN; j++)
-            {
-                if ((secret[i] == guess[j]) && i != j)
-                {
-                    feedback[j] = 'Y';
-                    counts[secret[i] - 'A']--;
-                    if (counts[secret[i] - 'A'] == 0)
-                        break;
-                }
-            }
+            feedback[i] = 'Y';
+            counts[guess[i] - 'A']--;
+        }
+        else
+        {
+            feedback[i] = '.';
         }
     }
 
