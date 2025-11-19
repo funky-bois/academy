@@ -54,7 +54,7 @@ int main(void)
         countOccassions(secret, counts);
         int correct = filterForDuplicatesAndCorrect(feedback, convertedGuess, secret, counts);
 
-        if (correct == 5)
+        if (correct == WORD_LEN)
         {
             printf("\nCongratulations!! You guessed the word correctly and won the game!\nThe word was: %s\n", secret);
             return 0;
@@ -72,7 +72,7 @@ string getInput()
     do
     {
         guess = get_string("guess = ");
-    } while (strlen(guess) != 5);
+    } while (strlen(guess) != WORD_LEN);
 
     return guess;
 }
@@ -136,6 +136,6 @@ int filterForDuplicatesAndCorrect(string feedback, string guess, string secret, 
     }
 
     if (correctCounter == WORD_LEN)
-        return 5;
+        return WORD_LEN;
     return 0;
 }
