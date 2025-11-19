@@ -17,8 +17,6 @@ int main()
   int randomNumber = rand() % 10;
   string wordUpper = upperString(words[randomNumber]);
 
-  printf("%s\n", wordUpper);
-
   int numberOfTries = 1;
   string guess;
   do
